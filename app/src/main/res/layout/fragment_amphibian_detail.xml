@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.amphibians.ui.AmphibianViewModel" />
+        <variable
+            name="primaryImage"
+            type="com.example.amphibians.network.Amphibian" />
+    </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@{viewModel.amphibians.title}"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Title"/>
+
+        <ImageView
+            android:id="@+id/primaryImage"
+            android:layout_width="match_parent"
+            android:layout_height="500px"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{viewModel.amphibians.primaryImage}"
+            android:padding="6dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"/>
+
+        <TextView
+            android:id="@+id/period"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@{`Genre: ` + viewModel.amphibians.period}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/primaryImage"
+            tools:text="Genre"/>
+
+        <TextView
+            android:id="@+id/artistDisplayName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@{`Platform: ` + viewModel.amphibians.artistDisplayName}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/period"
+            tools:text="Platform"/>
+
+        <TextView
+            android:id="@+id/artistNationality"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@{`Developer: ` + viewModel.amphibians.artistNationality}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/artistDisplayName"
+            tools:text="Developer"/>
+
+        <TextView
+            android:id="@+id/medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@{`Short Description: ` + viewModel.amphibians.medium}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/artistNationality"
+            tools:text="Description"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
